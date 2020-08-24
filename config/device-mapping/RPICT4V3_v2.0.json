@@ -1,0 +1,91 @@
+{
+    "NodeID": {
+        "type": "float",
+        "unit_of_measurement": "V",
+        "icon": ""
+    },
+    "Vrms1": {
+        "type": "float",
+        "unit_of_measurement": "V",
+        "icon": ""
+    },
+    "Vrms2": {
+        "type": "float",
+        "unit_of_measurement": "V",
+        "icon": ""
+    },
+    "Vrms3": {
+        "type": "float",
+        "unit_of_measurement": "V",
+        "icon": ""
+    },
+    "Vrms4": {
+        "type": "float",
+        "unit_of_measurement": "V",
+        "icon": ""
+    },
+    "Realpower1": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Realpower2": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Realpower3": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Realpower4": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Irms1": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "current-ac",
+        "convertMath": "/ 1000"
+    },
+    "Irms2": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "current-ac",
+        "convertMath": "/ 1000"
+    },
+    "Irms3": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "current-ac",
+        "convertMath": "/ 1000"
+    },
+    "Irms4": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "current-ac",
+        "convertMath": "/ 1000"
+    },
+    "PF1": {
+        "type": "float",
+        "unit_of_measurement": "",
+        "icon": ""
+    },
+    "PF2": {
+        "type": "float",
+        "unit_of_measurement": "",
+        "icon": ""
+    },
+    "PF3": {
+        "type": "float",
+        "unit_of_measurement": "",
+        "icon": ""
+    },
+    "PF4": {
+        "type": "float",
+        "unit_of_measurement": "",
+        "icon": ""
+    }
+}

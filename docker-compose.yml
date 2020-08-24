@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  lechacal-mqtt:
+
+    #image: bushrangers/ha-lechacal-mqtt
+
+    # Uncomment if you want to build your own local version.
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+
+    container_name: lechacal-mqtt
+
+    privileged: true
+    restart: always
+
+    volumes:
+        # Config.yml MUST be in the same directory as `server.js`
+        - ./config/config.yml:/opt/lechacal/config.yml
+        - ./config:/opt/lechacal/
+
+    devices:
+
+      # Serial Port Mapping...
+      - /dev/ttyAMA0:/dev/ttyAMA0

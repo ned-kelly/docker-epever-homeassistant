@@ -1,0 +1,22 @@
+FROM node:12-alpine
+
+ADD src/ /opt/lechacal
+ADD config/ /opt/lechacal/
+
+RUN apk add --no-cache --virtual \
+    .gyp \
+    python \
+    make \
+    g++ \
+    gcc \
+    linux-headers \
+    udev
+
+RUN cd /opt/lechacal && \
+    npm install serialport --build-from-source --build-from-source
+
+RUN cd /opt/lechacal && \
+    npm install
+
+WORKDIR /opt/lechacal
+CMD ["/bin/sh", "/opt/lechacal/server.sh"]

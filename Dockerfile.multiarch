@@ -1,0 +1,31 @@
+FROM --platform=${TARGETPLATFORM:-linux/amd64} node:12-alpine
+
+ARG BUILD_DATE
+ARG VERSION
+ARG VCS_REF
+ARG TARGETPLATFORM
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+  org.label-schema.version=$VERSION \
+  org.label-schema.vcs-ref=$VCS_REF
+
+ADD src/ /opt/lechacal
+ADD config/ /opt/lechacal/
+
+RUN apk add --no-cache --virtual \
+    .gyp \
+    python \
+    make \
+    g++ \
+    gcc \
+    linux-headers \
+    udev
+
+RUN cd /opt/lechacal && \
+    npm install serialport --build-from-source --build-from-source
+
+RUN cd /opt/lechacal && \
+    npm install
+
+WORKDIR /opt/lechacal
+CMD ["/bin/sh", "/opt/lechacal/server.sh"]

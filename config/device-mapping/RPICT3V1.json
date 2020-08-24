@@ -1,0 +1,45 @@
+{
+    "NodeID": {
+        "type": "float",
+        "unit_of_measurement": "",
+        "icon": ""
+    },
+    "Realpower1": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Realpower2": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Realpower3": {
+        "type": "float",
+        "unit_of_measurement": "W",
+        "icon": ""
+    },
+    "Irms1": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "",
+        "convertMath": "/ 1000"
+    },
+    "Irms2": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "",
+        "convertMath": "/ 1000"
+    },
+    "Irms3": {
+        "type": "float",
+        "unit_of_measurement": "A",
+        "icon": "",
+        "convertMath": "/ 1000"
+    },
+    "Vrms": {
+        "type": "float",
+        "unit_of_measurement": "V",
+        "icon": ""
+    }
+}

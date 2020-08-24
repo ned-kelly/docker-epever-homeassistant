@@ -1,0 +1,47 @@
+{
+    "NodeID": {
+        "type": "float",
+        "unit_of_measurement": "",
+        "icon": ""
+    },
+    "P1": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P2": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P3": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P4": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P5": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P6": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P7": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    },
+    "P8": {
+        "type": "float",
+        "unit_of_measurement": "Estimated Power",
+        "icon": ""
+    }
+}
