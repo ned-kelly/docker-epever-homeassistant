@@ -16,7 +16,7 @@ var receivedSerialData = false;
 console.log("Establishing MQTT connection...");
 var mqttClient  = mqtt.connect(`mqtt://${config.mqttServer || '0.0.0.0'}:${config.mqttPort || 1883}`)
 
-const responseJsonTemplate = require(`./config/${config.deviceMapping || 'RPICT7V1.json'}`);
+const responseJsonTemplate = require(`./config/device-mapping/${config.deviceMapping || 'RPICT7V1.json'}`);
 
 // ------------------------------------------------------------
 

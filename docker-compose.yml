@@ -3,12 +3,12 @@ version: '3'
 services:
   lechacal-mqtt:
 
-    #image: bushrangers/ha-lechacal-mqtt
+    image: bushrangers/ha-lechacal-mqtt
 
     # Uncomment if you want to build your own local version.
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile.dev
 
 
     container_name: lechacal-mqtt
@@ -19,9 +19,26 @@ services:
     volumes:
         # Config.yml MUST be in the same directory as `server.js`
         - ./config/config.yml:/opt/lechacal/config.yml
-        - ./config:/opt/lechacal/
+        - ./config:/opt/lechacal/config
 
     devices:
 
       # Serial Port Mapping...
       - /dev/ttyAMA0:/dev/ttyAMA0
+
+
+  # Used to auto-update images as we release new versions...
+  watchtower:
+    # Please see the following for configuration options:
+    #    https://containrrr.github.io/watchtower/container-selection/
+    image: containrrr/watchtower
+    container_name: watchtower
+
+    restart: always
+    privileged: true
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    command: --interval 500
+
