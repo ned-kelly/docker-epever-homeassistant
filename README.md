@@ -21,16 +21,10 @@ The program is designed to be run in a Docker Container, and can be deployed on 
 - RPICT3V1 - 3 CT 1 Voltage.
 - RPICT3T1 - 3 CT 1 Temperature
 - RPICT4V3_v2.0 - 4 CT 3 AC Voltage.
-- RPICT4T4 - 4 CT 4 Temperature
 - RPICT7V1_v2.0 - 7 CT 1 AC Voltage.
 - RPICT8 - 8 CT
-- RPIZCT4V3T1 - 4 CT 3 AC Voltage 1 Temperature. Raspberrypi Zero.
-- RPI LCT3V1 - 3CT 1 Voltage for large CT.
-- RPI LCT4V3 - 3CT 3 Voltage for large CT.
-- RPIZ_CT3V1 - 3 CT 1 AC Voltage. Raspberrypi Zero.
-- RPIZ_CT3T1 - 3 CT 1 Temperature. Raspberrypi Zero.
-- RPI_DCI4DCV4 - 4 DC Current 4 DC Voltage.
-- RPI_DCV8 - 8 Channels Any.
+
+Note, if your device is not listed here you can create a json mapping file - Please look at the examples in the `config/device-mapping` directory.
 
 ## Prerequisites
 
