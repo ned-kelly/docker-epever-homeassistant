@@ -30,12 +30,7 @@ port.open(function (err) {
 
 mqttClient.on('connect', function () {
     console.log("Creating HA Sensors...");
-
-    // Logic to Auto-create HA device...
-    Object.keys(responseJsonTemplate).forEach(function(key) {
-        createHASensor(key, responseJsonTemplate[key].unit_of_measurement, responseJsonTemplate[key].icon)
-    });
-
+    createHASensors();
 })
 
 port.pipe(parser);
@@ -105,3 +100,12 @@ function pushHASensorData(name, data) {
         `${config.mqttTopic || 'homeassistant'}/sensor/${config.mqttDevicename || 'lechacal'}_${name}`, `${data}`
     );
 }
+
+function createHASensors() {
+    // Logic to Auto-create HA device...
+    Object.keys(responseJsonTemplate).forEach(function(key) {
+        createHASensor(key, responseJsonTemplate[key].unit_of_measurement, responseJsonTemplate[key].icon)
+    });
+}
+
+setTimeout(createHASensors, 1000 * 60 * 5); // Re-create HA sensors every 5 minutes (if HA is restarted etc)...
