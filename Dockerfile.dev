@@ -1,22 +1,24 @@
-FROM node:12-alpine
+FROM alpine:3
 
-ADD src/ /opt/lechacal
-ADD config/ /opt/lechacal/
+ADD src/ /opt/epever
+#ADD config/ /opt/epever/
 
-RUN apk add --no-cache --virtual \
-    .gyp \
-    python \
+# Enable edge repos...
+RUN sed -i '/edge/s/^#//' /etc/apk/repositories
+
+RUN apk add --no-cache \
     make \
     g++ \
     gcc \
-    linux-headers \
-    udev
+    php-cli \
+    bash \
+    composer
 
-RUN cd /opt/lechacal && \
-    npm install serialport --build-from-source --build-from-source
+WORKDIR /opt/epever
 
-RUN cd /opt/lechacal && \
-    npm install
+RUN cd /opt/epever && \
+    composer install
 
-WORKDIR /opt/lechacal
-CMD ["/bin/sh", "/opt/lechacal/server.sh"]
+HEALTHCHECK CMD pgrep php; if [ 0 != $? ]; then exit 1; fi;
+
+CMD ["/bin/bash", "/opt/epever/entrypoint.sh"]

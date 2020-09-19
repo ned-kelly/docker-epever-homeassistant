@@ -1,22 +1,22 @@
-# Configuration for the lechacal CT Clamp Raspberry PI Board, to read and send data back to Home Assistant...
-# Refer to http://lechacal.com/wiki/index.php?title=RPICT7V1_v2.0 for details.
-#
+# Configuration for EPEver Serial Device
 ############################################################
 
-serialPort: /dev/ttyAMA0
-baudRate: 38400
-
-# Seems like the device is slightly out, so we need to calculate the offset to have an accurate reading...
-# Set to 0 if you don't want to add any voltage offsets...
-IrmsMAoffset: -240  # Indicates we're subtracting about 240 mA from the readings...
+# Serial config for the Tracer Device...
+serialPort: /dev/ttyXRUSB0
+baudRate: 115200
+flowControl: none
+parity: none
+char: 8
+stopBits: 1
 
 # Home Assistant MQTT server:
 mqttServer: 10.16.10.4
 mqttPort: 1883
 mqttTopic: homeassistant
-mqttDevicename: lechacal1
+mqttDevicename: tracer_1
 
-# As there are many devices that all return data the same way, we use a JSON 'mapping' file...
-# This file tells the process how to 'parse' the data that is returned so it can be correctly sent to Home Assistant.
-# There are multiple devices available - If your device is not here, you may simply create a new 'mapping' file - refer to `RPICT7V1.json` as an example.
-deviceMapping: RPICT7V1.json
+# Core Program Config...
+
+# How often poll for data (in seconds)
+pollingInterval: 60
+verboseDebugging: false # set to true to debug sensor values in log.

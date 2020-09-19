@@ -1,44 +1,43 @@
 version: '3'
 
 services:
-  lechacal-mqtt:
+  epever-mqtt:
 
-    image: bushrangers/ha-lechacal-mqtt
+    image: bushrangers/ha-epever-mqtt
 
     # Uncomment if you want to build your own local version.
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile.dev
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.dev
 
-
-    container_name: lechacal-mqtt
+    container_name: epever-mqtt
 
     privileged: true
     restart: always
 
     volumes:
         # Config.yml MUST be in the same directory as `server.js`
-        - ./config/config.yml:/opt/lechacal/config.yml
-        - ./config:/opt/lechacal/config
+        - ./config:/opt/epever/config
+        - ./src/:/opt/epever
 
     devices:
-
       # Serial Port Mapping...
-      - /dev/ttyAMA0:/dev/ttyAMA0
+      # (Assumes using the Exar Corp Modbus USB cable that comes with the MPPT controller)
+      - /dev/ttyXRUSB0:/dev/ttyXRUSB0
 
 
-  # Used to auto-update images as we release new versions...
-  watchtower:
-    # Please see the following for configuration options:
-    #    https://containrrr.github.io/watchtower/container-selection/
-    image: containrrr/watchtower
-    container_name: watchtower
+  # # Used to auto-update images as we release new versions...
+  # watchtower:
+  #   # Please see the following for configuration options:
+  #   #    https://containrrr.github.io/watchtower/container-selection/
+  #   image: containrrr/watchtower
+  #   container_name: watchtower
 
-    restart: always
-    privileged: true
+  #   restart: always
+  #   privileged: true
 
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
 
-    command: --interval 500
+  #   command: --interval 500
 

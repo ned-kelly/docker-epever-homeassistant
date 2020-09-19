@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} node:12-alpine
+FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3
 
 ARG BUILD_DATE
 ARG VERSION
@@ -9,23 +9,25 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.version=$VERSION \
   org.label-schema.vcs-ref=$VCS_REF
 
-ADD src/ /opt/lechacal
-ADD config/ /opt/lechacal/
 
-RUN apk add --no-cache --virtual \
-    .gyp \
-    python \
+ADD src/ /opt/epever
+
+# Enable edge repos...
+RUN sed -i '/edge/s/^#//' /etc/apk/repositories
+
+RUN apk add --no-cache \
     make \
     g++ \
     gcc \
-    linux-headers \
-    udev
+    php-cli \
+    bash \
+    composer
 
-RUN cd /opt/lechacal && \
-    npm install serialport --build-from-source --build-from-source
+WORKDIR /opt/epever
 
-RUN cd /opt/lechacal && \
-    npm install
+RUN cd /opt/epever && \
+    composer install
 
-WORKDIR /opt/lechacal
-CMD ["/bin/sh", "/opt/lechacal/server.sh"]
+HEALTHCHECK CMD pgrep php; if [ 0 != $? ]; then exit 1; fi;
+
+CMD ["/bin/bash", "/opt/epever/entrypoint.sh"]
