@@ -18,7 +18,7 @@ services:
     volumes:
         # Config.yml MUST be in the same directory as `server.js`
         - ./config:/opt/epever/config
-        - ./src/:/opt/epever
+        #- ./src/:/opt/epever
 
     devices:
       # Serial Port Mapping...
@@ -26,18 +26,18 @@ services:
       - /dev/ttyXRUSB0:/dev/ttyXRUSB0
 
 
-  # # Used to auto-update images as we release new versions...
-  # watchtower:
-  #   # Please see the following for configuration options:
-  #   #    https://containrrr.github.io/watchtower/container-selection/
-  #   image: containrrr/watchtower
-  #   container_name: watchtower
+  # Used to auto-update images as we release new versions...
+  watchtower:
+    # Please see the following for configuration options:
+    #    https://containrrr.github.io/watchtower/container-selection/
+    image: containrrr/watchtower
+    container_name: watchtower
 
-  #   restart: always
-  #   privileged: true
+    restart: always
+    privileged: true
 
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
-  #   command: --interval 500
+    command: --interval 500
 
